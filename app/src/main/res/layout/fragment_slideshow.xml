@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="102dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="248dp"
         android:layout_marginEnd="100dp"
         android:ems="10"
         android:hint="Status"
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="264dp"
+        android:layout_marginTop="168dp"
         android:layout_marginEnd="101dp"
         android:ems="10"
         android:hint="Name"
@@ -50,10 +50,10 @@
         android:text="Update"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
@@ -69,16 +69,13 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="20dp" />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="63dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="175dp"
-        android:src="@drawable/baseline_person_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.959"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageView8"
+        android:layout_width="84dp"
+        android:layout_height="223dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/profile_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
