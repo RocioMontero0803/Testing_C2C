@@ -26,6 +26,7 @@ class SlideshowFragment : Fragment() {
     private lateinit var databaseReference: DatabaseReference
     private lateinit var storageReference: StorageReference
     private lateinit var imageUri: Uri
+
     //private val packageName = context?.packageName
 
     // This property is only valid between onCreateView and
@@ -71,7 +72,7 @@ class SlideshowFragment : Fragment() {
 
     private fun uploadProfilePic() {
        imageUri = Uri.parse("android.resource://" + requireContext().packageName +"/${R.drawable.profile_icon}")
-        storageReference = FirebaseStorage.getInstance().getReference("Users/"+auth.currentUser?.uid)
+        storageReference = FirebaseStorage.getInstance().getReference("Users/"+auth.currentUser?.uid + ".jpg")
         storageReference.putFile(imageUri).addOnSuccessListener {
             Toast.makeText(context, "Profile success", Toast.LENGTH_SHORT).show()
         }.addOnFailureListener{

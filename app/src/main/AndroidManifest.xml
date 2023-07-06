@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Testing_">
         <activity
+            android:name=".ShowProfile"
+            android:exported="false" />
+        <activity
             android:name=".MainNavActivity"
             android:exported="false"
             android:label="@string/title_activity_main_nav"
@@ -30,7 +33,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>
