@@ -1,10 +1,11 @@
 package com.example.testing_
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.BitmapFactory
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.testing_.databinding.ActivityShowProfileBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -37,6 +38,14 @@ class ShowProfile : AppCompatActivity() {
         if (uid.isNotEmpty()){
 
             getUserData()
+        }
+        binding.updateBtn.setOnClickListener {
+            val intent = Intent(this, ProfileInput::class.java)
+            startActivity(intent)
+        }
+        binding.NavBtn.setOnClickListener{
+            val intent = Intent(this, MainNavActivity::class.java)
+            startActivity(intent)
         }
     }
 

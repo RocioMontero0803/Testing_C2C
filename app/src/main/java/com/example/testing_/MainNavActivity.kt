@@ -1,5 +1,6 @@
 package com.example.testing_
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.Menu
 import com.google.android.material.snackbar.Snackbar
@@ -12,6 +13,12 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.testing_.databinding.ActivityMainNavBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.StorageReference
 
 class MainNavActivity : AppCompatActivity() {
 
@@ -25,6 +32,8 @@ class MainNavActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.appBarMainNav.toolbar)
+
+        
 
         binding.appBarMainNav.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -54,4 +63,6 @@ class MainNavActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main_nav)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+
 }

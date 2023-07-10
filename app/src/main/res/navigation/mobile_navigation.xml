@@ -11,17 +11,17 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
-    <activity
-        android:id="@+id/nav_gallery"
-        android:name="com.example.testing_.ShowProfile"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/activity_show_profile" />
-
     <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.testing_.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <activity
         android:id="@+id/nav_slideshow"
-        android:name="com.example.testing_.ui.slideshow.SlideshowFragment"
+        android:name="com.example.testing_.ShowProfile"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/activity_show_profile" />
     <activity
         android:id="@+id/nav_logout"
         android:name="com.example.testing_.SignInActivity"
