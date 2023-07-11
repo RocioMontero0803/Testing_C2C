@@ -1,6 +1,5 @@
 package com.example.testing_
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.Menu
 import com.google.android.material.snackbar.Snackbar
@@ -13,18 +12,11 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.testing_.databinding.ActivityMainNavBinding
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.storage.StorageReference
 
 class MainNavActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainNavBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -33,7 +25,6 @@ class MainNavActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.appBarMainNav.toolbar)
 
-        
 
         binding.appBarMainNav.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -46,12 +37,13 @@ class MainNavActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_logout
+                R.id.nav_home, R.id.nav_disscuss, R.id.nav_profile, R.id.nav_logout
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
