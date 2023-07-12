@@ -9,10 +9,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Testing_">
         <activity
-            android:name=".ProfileInput"
+            android:name=".ImagesActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileUpdate"
+            android:name=".ProfileInput"
             android:exported="false" />
         <activity
             android:name=".ShowProfile"
