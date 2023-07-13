@@ -26,8 +26,6 @@ class HomeFragment : Fragment() {
     private lateinit var storageRef: StorageReference
     private lateinit var firebaseFirestore: FirebaseFirestore
     private var imageUri: Uri? = null
-    private lateinit var firestoreDB: FirebaseFirestore
-    private lateinit var posts: MutableList<Posts>
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -111,33 +109,36 @@ class HomeFragment : Fragment() {
 
                         firebaseFirestore.collection("images").add(map)
                             .addOnCompleteListener { firestoreTask ->
-//
+
                                 if (firestoreTask.isSuccessful) {
-//                                    Toast.makeText(this, "upload success", Toast.LENGTH_SHORT).show()
-//
-//                                } else {
+                                    Toast.makeText(activity, "upload success", Toast.LENGTH_SHORT)
+                                        .show()
+
+                                }
+                                //else {
 //                                    Toast.makeText(
-//                                        this,
+//                                        activity,
 //                                        firestoreTask.exception?.message,
 //                                        Toast.LENGTH_SHORT
 //                                    ).show()
 //
 //                                }
-                                    binding.progressBar.visibility = View.GONE
-                                    binding.imageView.setImageResource(R.drawable.upload_vector)
-
-                                }
-//                    }
-                                else {
-                                    // Toast.makeText()(this, task.exception?.message, Toast.LENGTH_SHORT).show()
-                                    binding.progressBar.visibility = View.GONE
-                                    binding.imageView.setImageResource(R.drawable.upload_vector)
-                                }
+                                binding.progressBar.visibility = View.GONE
+                                binding.imageView.setImageResource(R.drawable.upload_vector)
                             }
+
                     }
                 }
-            }
-        }}
+                                else {
+                                     Toast.makeText(activity, "upload not successful", Toast.LENGTH_SHORT).show()
+                                    binding.progressBar.visibility = View.GONE
+                                    binding.imageView.setImageResource(R.drawable.upload_vector)
+                                }
+
+    }
+}
+        }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

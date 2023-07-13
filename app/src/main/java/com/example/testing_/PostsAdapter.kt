@@ -6,7 +6,7 @@ import com.example.testing_.databinding.EachItemBinding
 import com.example.testing_.databinding.FragmentHomeBinding
 import com.squareup.picasso.Picasso
 
-class PostsAdapter(private var Posts: List<String>) :
+class PostsAdapter(private var MList: List<String>) :
     RecyclerView.Adapter<PostsAdapter.ImagesViewHolder>() {
 
     inner class ImagesViewHolder(var binding: EachItemBinding) :
@@ -19,14 +19,14 @@ class PostsAdapter(private var Posts: List<String>) :
 
     override fun onBindViewHolder(holder: ImagesViewHolder, position: Int) {
         with(holder.binding){
-            with(Posts[position]){
+            with(MList[position]){
                 Picasso.get().load(this).into(imageView)
             }
         }
     }
 
     override fun getItemCount(): Int {
-        return Posts.size
+        return MList.size
     }
 }
 //import android.view.LayoutInflater
