@@ -15,7 +15,7 @@ class ImagesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityImagesBinding
     private lateinit var firebaseFirestore: FirebaseFirestore
     private var mList = mutableListOf<String>()
-    private lateinit var adapter: PostsAdapter
+    private lateinit var adapter: PostsAdapterI
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +31,9 @@ class ImagesActivity : AppCompatActivity() {
         firebaseFirestore = FirebaseFirestore.getInstance()
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = PostsAdapter(mList)
+        adapter = PostsAdapterI(mList)
         binding.recyclerView.adapter = adapter
+
     }
 
     @SuppressLint("NotifyDataSetChanged")

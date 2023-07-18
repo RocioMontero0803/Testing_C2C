@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_height="400dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="12dp"
     app:cardUseCompatPadding="true">
@@ -44,5 +44,13 @@
         android:textSize="8dp"
         tools:text= "Really cool!"
         />
+
+    <ImageView
+        android:id="@+id/likeButton"
+        android:layout_width="18dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="@id/imageView"
+        app:layout_constraintTop_toBottomOf="@id/imageView" />
 </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

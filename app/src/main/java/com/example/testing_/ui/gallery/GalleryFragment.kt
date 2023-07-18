@@ -1,17 +1,20 @@
 package com.example.testing_.ui.gallery
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+//import com.example.testing_.PostAdapter
+//import com.example.testing_.daos.PostDao
 import com.example.testing_.databinding.FragmentGalleryBinding
 
 class GalleryFragment : Fragment() {
 
     private var _binding: FragmentGalleryBinding? = null
+//    private lateinit var postDao: PostDao
+//    private lateinit var adapter: PostAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -26,9 +29,38 @@ class GalleryFragment : Fragment() {
         _binding = FragmentGalleryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-
+//        binding.fab.setOnClickListener{
+//            val intent = Intent(activity, CreatePostActivity::class.java)
+//            startActivity(intent)
+//        }
+     //   setUpRecyclerView()
         return root
     }
+//    private fun setUpRecyclerView() {
+//        postDao = PostDao()
+//        val postsCollections = postDao.postCollections
+//        val query = postsCollections.orderBy("createdAt", Query.Direction.DESCENDING)
+//        val recyclerViewOptions = FirestoreRecyclerOptions.Builder<Post>().setQuery(query, Post::class.java).build()
+//
+//        adapter = PostAdapter(recyclerViewOptions, this)
+//
+//        binding.recyclerViewPost.adapter = adapter
+//        binding.recyclerViewPost.layoutManager = LinearLayoutManager(activity)
+//    }
+//
+//    override fun onStart() {
+//        super.onStart()
+//        adapter.startListening()
+//    }
+//
+//    override fun onStop() {
+//        super.onStop()
+//        adapter.stopListening()
+//    }
+//
+//    override fun onLikeClicked(postId: String) {
+//        postDao.updateLikes(postId)
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

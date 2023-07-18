@@ -1,5 +1,6 @@
 package com.example.testing_
 
+import com.example.testing_.User
 import com.google.firebase.database.PropertyName
 
 data class Posts(
