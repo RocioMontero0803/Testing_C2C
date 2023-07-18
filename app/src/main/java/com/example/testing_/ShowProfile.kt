@@ -31,6 +31,7 @@ class ShowProfile : AppCompatActivity() {
         binding = ActivityShowProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //get current user
         auth = FirebaseAuth.getInstance()
         uid = auth.currentUser?.uid.toString()
 
@@ -39,23 +40,26 @@ class ShowProfile : AppCompatActivity() {
 
             getUserData()
         }
+        // button goes to profileinput page
         binding.updateBtn.setOnClickListener {
             val intent = Intent(this, ProfileInput::class.java)
             startActivity(intent)
         }
+
+        // button goes back to main nav
         binding.NavBtn.setOnClickListener{
             val intent = Intent(this, MainNavActivity::class.java)
             startActivity(intent)
         }
     }
-
+    // gets the user data from database in firebase
     private fun getUserData() {
         databaseReference.child(uid).addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 user = snapshot.getValue(User::class.java)!!
-                binding.tvname.text = user.name
-                binding.tvstatus.text = user.status
-                getUserProfile()
+                binding.tvname.text = user.firstName
+                binding.tvstatus.text = user.lastName
+              //  getUserProfile()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -64,7 +68,7 @@ class ShowProfile : AppCompatActivity() {
 
         })
     }
-
+        // get user profile picture from storage in firestore
     private fun getUserProfile() {
         storageReference = FirebaseStorage.getInstance().reference.child("Users/$uid.jpg")
         val localFile = File.createTempFile("tempImage", "jpg")

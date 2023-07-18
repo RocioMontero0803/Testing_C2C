@@ -13,15 +13,15 @@
 
     <fragment
         android:id="@+id/nav_disscuss"
-        android:name="com.example.testing_.ui.gallery.GalleryFragment"
+        android:name="com.example.testing_.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_slideshow" />
 
-    <activity
+    <fragment
         android:id="@+id/nav_profile"
-        android:name="com.example.testing_.ShowProfile"
+        android:name="com.example.testing_.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/activity_show_profile" />
+        tools:layout="@layout/fragment_slideshow" />
     <activity
         android:id="@+id/nav_logout"
         android:name="com.example.testing_.SignInActivity"
