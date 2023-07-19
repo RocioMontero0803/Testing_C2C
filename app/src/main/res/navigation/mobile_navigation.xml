@@ -11,11 +11,11 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
+    <activity
         android:id="@+id/nav_disscuss"
-        android:name="com.example.testing_.ui.gallery.GalleryFragment"
+        android:name="com.example.testing_.ImagesActivity"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/activity_images" />
 
     <fragment
         android:id="@+id/nav_profile"

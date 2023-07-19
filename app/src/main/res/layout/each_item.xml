@@ -14,20 +14,20 @@
     android:layout_height="match_parent"
     android:layout_margin="8dp"
     android:orientation="vertical">
+
     <TextView
-        android:id="@+id/tvname"
+        android:id="@+id/tvnamepost"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="41dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        tools:text= "user"
-        />
+        tools:text="POST" />
+
     <TextView
-        android:id="@+id/tvtime"
+        android:id="@+id/tvdescription"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="73dp"
         android:textSize="12sp"
-        tools:text= "20 minutes ago"
-        />
+        tools:text="Ummmm" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -37,13 +37,6 @@
         android:scaleType="centerCrop"
          />
 
-    <TextView
-        android:id="@+id/tvdescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="8dp"
-        tools:text= "Really cool!"
-        />
 
     <ImageView
         android:id="@+id/likeButton"

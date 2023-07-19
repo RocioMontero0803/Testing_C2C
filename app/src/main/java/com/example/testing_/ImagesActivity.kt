@@ -1,11 +1,13 @@
 package com.example.testing_
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.testing_.databinding.ActivityImagesBinding
+import com.example.testing_.ui.home.HomeFragment
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -23,9 +25,16 @@ class ImagesActivity : AppCompatActivity() {
         binding = ActivityImagesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.fab.setOnClickListener{
+            val intent = Intent(this, HomeFragment::class.java)
+            startActivity(intent)
+        }
+
         initVars()
         getImages()
+
     }
+
 
     private fun initVars() {
         firebaseFirestore = FirebaseFirestore.getInstance()

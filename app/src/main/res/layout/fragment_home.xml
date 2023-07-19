@@ -6,31 +6,35 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".ui.home.HomeFragment">
+
+
     <EditText
         android:id="@+id/postInput"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_width="363dp"
+        android:layout_height="156dp"
+        android:layout_margin="12dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/edittext_round_shape"
+        android:gravity="top"
+        android:hint="What do you want to talk about?"
+        android:padding="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageCardView"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:hint="What do you want to talk about?"
-        android:gravity="top"
-        android:layout_margin="12dp"
-        android:padding="12dp"
-        android:background="@drawable/edittext_round_shape"/>
-
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/imageCardView"
-        android:layout_width="0dp"
-        android:layout_height="280dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="311dp"
+        android:layout_height="225dp"
+        android:layout_marginBottom="8dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="16dp"
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toTopOf="@+id/materialCardView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent">
 
 
@@ -40,21 +44,21 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="266dp"
+                android:layout_height="164dp"
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
                 app:srcCompat="@drawable/upload_vector" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
-
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView2"
@@ -113,14 +117,14 @@
         android:id="@+id/imageView2"
         android:layout_width="0dp"
         android:layout_height="200dp"
+        android:layout_marginTop="88dp"
         android:layout_marginEnd="-50dp"
         android:rotationY="180"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-         />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -133,6 +137,22 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageCardView" />
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="342dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginBottom="1dp"
+        android:ems="10"
+        android:hint="Post Title"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/postInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
