@@ -25,6 +25,7 @@ class ImagesActivity : AppCompatActivity() {
         binding = ActivityImagesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         binding.fab.setOnClickListener{
             val intent = Intent(this, HomeFragment::class.java)
             startActivity(intent)

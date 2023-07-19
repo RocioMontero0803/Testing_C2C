@@ -6,10 +6,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.testing_.R
 import com.example.testing_.User
 import com.example.testing_.databinding.FragmentProfileBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -33,6 +37,7 @@ class ProfileFragment : Fragment() {
     private var imageUri: Uri? = null
     private lateinit var user: User
     private lateinit var uid : String
+    val userStatus = arrayOf("Student", "Teacher")
 
     //private val packageName = context?.packageName
 
@@ -50,6 +55,39 @@ class ProfileFragment : Fragment() {
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+
+        val spinner = binding.spinner
+        //val arrayAdapter = ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item, userStatus)
+        val arrayAdapter = activity?.let {
+            ArrayAdapter<String>(
+                it,
+                android.R.layout.simple_spinner_dropdown_item,
+                userStatus
+            )
+        }
+        spinner.adapter = arrayAdapter
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                Toast.makeText(
+                    activity,
+                    "Status selected " + userStatus[position],
+                    Toast.LENGTH_SHORT
+                ).show()
+                //  val text = spinner.selectedItem.toString()
+                //   databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(text);
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }
         // user auth
         auth = FirebaseAuth.getInstance()
         uid = auth.currentUser?.uid.toString()
@@ -74,9 +112,10 @@ class ProfileFragment : Fragment() {
         binding.sBtn.setOnClickListener{
             val name = binding.etName.text.toString()
             val status = binding.etStatus.text.toString()
+            val select = binding.spinner.selectedItem.toString()
 
 
-            val user = User(name,status)
+            val user = User(name,status, select)
 
             // checking if there is a user and if so gets the function to upload pic
             if(uid != null){
