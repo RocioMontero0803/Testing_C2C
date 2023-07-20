@@ -76,7 +76,7 @@ class ProfileFragment : Fragment() {
             ) {
                 Toast.makeText(
                     activity,
-                    "Status selected " + userStatus[position],
+                    "Status selected " + userStatus[position] + " press update",
                     Toast.LENGTH_SHORT
                 ).show()
                 //  val text = spinner.selectedItem.toString()
