@@ -39,7 +39,6 @@ class ProfileFragment : Fragment() {
     private lateinit var uid : String
     val userStatus = arrayOf("Student", "Teacher")
 
-    //private val packageName = context?.packageName
 
     // This property is only valid between onCreateView and
     // onDestroyView.

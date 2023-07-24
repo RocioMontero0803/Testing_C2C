@@ -52,18 +52,6 @@ class ScrollingHomeFragment : Fragment() {
         uid = auth.currentUser?.uid.toString()
 
 
-        //   databaseReference = FirebaseDatabase.getInstance().getReference("Users")
-//        if(uid != null && user.status == "teacher"){
-//        databaseReference.child(uid).setValue(user.status).addOnCompleteListener {
-////                    uploadProfilePic()
-//            // uploadImage()
-//            binding.fab.setOnClickListener {
-//                val intent = Intent(this, HomeFragment::class.java)
-//                startActivity(intent)
-//            }
-//        }
-//       }
-
 
         binding.fab.setOnClickListener {
             val intent = Intent(activity, LandingPage::class.java)
