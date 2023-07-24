@@ -1,35 +1,47 @@
 package com.example.testing_.ui.home
 
-import android.content.Context
-import android.content.Intent
+
 import android.net.Uri
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.testing_.ImagesActivity
-import com.example.testing_.Posts
-import com.example.testing_.R
-import com.example.testing_.User
+import com.example.testing_.DataClass
+import com.example.testing_.MyAdapter
+import com.example.testing_.UploadActivity
 import com.example.testing_.databinding.FragmentHomeBinding
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
+import com.google.firebase.database.*
+import java.util.*
+
+
+
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import com.example.testing_.databinding.ActivityMainBinding
+
+
+import android.content.Intent
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.GridLayoutManager
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
+import java.util.*
 
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    private lateinit var storageRef: StorageReference
-    private lateinit var firebaseFirestore: FirebaseFirestore
+    var databaseReference: DatabaseReference? = null
+    var eventListener: ValueEventListener? = null
+    private lateinit var dataList: ArrayList<DataClass>
+    private lateinit var adapter: MyAdapter
     private var imageUri: Uri? = null
+    private lateinit var uid : String
+    private lateinit var auth : FirebaseAuth
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -44,104 +56,96 @@ class HomeFragment : Fragment() {
             ViewModelProvider(this).get(HomeViewModel::class.java)
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        val gridLayoutManager = GridLayoutManager(activity, 1)
+        binding.recyclerView.layoutManager = gridLayoutManager
+        binding.search.clearFocus()
 
-        initVars()
-        registerClickEvents()
-//        posts = mutableListOf()
-//        firestoreDB = FirebaseFirestore.getInstance()
-//        val postsReference = firestoreDB
-//            .collection("posts")
-//            .limit(20)
-//            .orderBy("time_stamp", Query.Direction.DESCENDING)
-//        postsReference.addSnapshotListener {snapshot, exception ->
-//            if(exception !=null || snapshot == null){
-//                Log.e(TAG, "Exception when querying posts", exception)
-//                return@addSnapshotListener
-//            }
-//            val postList = snapshot.toObjects(Posts::class.java)
-//            for (post in postList) {
-//                Log.i(TAG, "Post ${post}")
-//            }
+        auth = FirebaseAuth.getInstance()
+        uid = auth.currentUser?.uid.toString()
+
+//        val builder = AlertDialog.Builder(
+//            requireActivity()
+//        )
+//
+//        val view: View = requireActivity().layoutInflater.inflate(R.layout.progress_layout_test, null)
+//        builder.setView(view)
+//
+//        val dialog = builder.show()
+//        val builder = activity?.let { AlertDialog.Builder(it) }
+//        if (builder != null) {
+//            builder.setCancelable(false)
 //        }
+//        builder.setView(R.layout.progress_layout)
+//        val dialog = builder.create()
+      //  dialog.show()
 
+        dataList = ArrayList()
+        adapter = activity?.let { MyAdapter(it, dataList) }!!
+        binding.recyclerView.adapter = adapter
+        databaseReference = FirebaseDatabase.getInstance().getReference("Todo List")
+      //  dialog.show()
 
+        eventListener = databaseReference!!.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                dataList.clear()
+                for (itemSnapshot in snapshot.children) {
+                    val dataClass = itemSnapshot.getValue(DataClass::class.java)
+                    if (dataClass != null) {
+                        dataList.add(dataClass)
+                    }
+                }
+                adapter.notifyDataSetChanged()
+             //   dialog.dismiss()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            //    dialog.dismiss()
+            }
+        })
+
+        binding.fab.setOnClickListener(View.OnClickListener {
+            val intent = Intent(activity, UploadActivity::class.java)
+            startActivity(intent)
+        })
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users")
+        databaseReference!!.child(uid).child("status").get().addOnSuccessListener {
+            Log.i("firebase", "Got role ${it.value}")
+            if (it.value == "Student") {
+                binding.fab.visibility = View.GONE
+            }
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+
+        binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                searchList(newText)
+                return true
+            }
+        })
         return root
     }
 
-    private fun registerClickEvents() {
-        binding.uploadBtn.setOnClickListener {
-            uploadImage()
+    fun searchList(text: String) {
+        val searchList = ArrayList<DataClass>()
+        for (dataClass in dataList) {
+            if (dataClass.dataPriority?.lowercase()
+                    ?.contains(text.lowercase(Locale.getDefault())) == true
+            ) {
+                searchList.add(dataClass)
+            }
         }
+        adapter.searchDataList(searchList)
 
-        binding.showAllBtn.setOnClickListener {
-            val intent = Intent(context, ImagesActivity::class.java)
-            startActivity(intent)
-            // startActivity(Intent(this, ImagesActivity::class.java))
-        }
 
-        binding.imageView.setOnClickListener {
-            resultLauncher.launch("image/*")
-        }
-    }
-
-    private val resultLauncher = registerForActivityResult(
-        ActivityResultContracts.GetContent()
-    ) {
-
-        imageUri = it
-        binding.imageView.setImageURI(it)
     }
 
 
-    private fun initVars() {
-
-        storageRef = FirebaseStorage.getInstance().reference.child("Images")
-        firebaseFirestore = FirebaseFirestore.getInstance()
-    }
-
-    private fun uploadImage() {
-        binding.progressBar.visibility = View.VISIBLE
-        storageRef = storageRef.child(System.currentTimeMillis().toString())
-        imageUri?.let {
-            storageRef.putFile(it).addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-
-                    storageRef.downloadUrl.addOnSuccessListener { uri ->
-
-                        val map = HashMap<String, Any>()
-                        map["pic"] = uri.toString()
-
-                        firebaseFirestore.collection("images").add(map)
-                            .addOnCompleteListener { firestoreTask ->
-
-                                if (firestoreTask.isSuccessful) {
-                                    Toast.makeText(activity, "upload success", Toast.LENGTH_SHORT)
-                                        .show()
-
-                                }
-                                //else {
-//                                    Toast.makeText(
-//                                        activity,
-//                                        firestoreTask.exception?.message,
-//                                        Toast.LENGTH_SHORT
-//                                    ).show()
-//
-//                                }
-                                binding.progressBar.visibility = View.GONE
-                                binding.imageView.setImageResource(R.drawable.upload_vector)
-                            }
-
-                    }
-                }
-                                else {
-                                     Toast.makeText(activity, "upload not successful", Toast.LENGTH_SHORT).show()
-                                    binding.progressBar.visibility = View.GONE
-                                    binding.imageView.setImageResource(R.drawable.upload_vector)
-                                }
-
-    }
-}
-        }
 
 
     override fun onDestroyView() {

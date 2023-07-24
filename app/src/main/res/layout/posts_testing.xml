@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
     <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +20,6 @@
         app:closeIcon="@drawable/baseline_clear_24"
         app:searchIcon="@drawable/baseline_search_24"
         />
-
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
@@ -29,7 +27,6 @@
         android:id="@+id/recyclerView"
         android:layout_below="@id/search"
         android:scrollbars="vertical"/>
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -40,5 +37,4 @@
         android:backgroundTint="@color/purple"
         app:tint = "@color/white"
         android:src="@drawable/baseline_add_box_24" />
-
 </RelativeLayout>

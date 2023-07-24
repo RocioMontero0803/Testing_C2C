@@ -9,12 +9,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.testing_.databinding.ActivityImagesBinding
-import com.example.testing_.ui.home.HomeFragment
+//import com.example.testing_.ui.home.HomeFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.example.testing_.User
+import com.example.testing_.ui.home.ScrollingHomeFragment
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
@@ -53,7 +54,7 @@ class ImagesActivity : AppCompatActivity() {
 //       }
 
         binding.fab.setOnClickListener{
-            val intent = Intent(this, HomeFragment::class.java)
+            val intent = Intent(this, ScrollingHomeFragment::class.java)
             startActivity(intent)
         }
 
