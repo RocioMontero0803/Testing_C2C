@@ -114,6 +114,7 @@ class ScrollingHomeFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        mList.clear()
         _binding = null
     }
 }

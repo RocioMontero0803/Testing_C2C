@@ -3,10 +3,19 @@ package com.example.testing_
 import com.example.testing_.User
 import com.google.firebase.database.PropertyName
 
-data class Posts(
-    var description: String = "",
-    @get:PropertyName("image_url") @set:PropertyName("image_url") var image_url: String = "",
-    @get:PropertyName("time_stamp") @set:PropertyName("time_stamp")var time_stamp: Long = 0,
+class Posts {
+    var description: String? = null
+    var image_url: String? = null
     var user: User? = null
-    ,var title: String? = ""
-    )
+    var title: String? = null
+    constructor(description: String?,
+                image_url: String?,
+                user: User?,
+                title: String?){
+        this.description = description
+        this.image_url = image_url
+        this.user = user
+        this.title = title
+    }
+
+}
