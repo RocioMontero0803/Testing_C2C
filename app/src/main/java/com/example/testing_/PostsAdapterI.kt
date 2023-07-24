@@ -3,7 +3,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testing_.databinding.EachItemBinding
-import com.example.testing_.databinding.FragmentHomeBinding
 import com.squareup.picasso.Picasso
 
 class PostsAdapterI(private var Posts: List<String>) :
@@ -20,6 +19,8 @@ class PostsAdapterI(private var Posts: List<String>) :
     override fun onBindViewHolder(holder: ImagesViewHolder, position: Int) {
         with(holder.binding){
             with(Posts[position]){
+                tvnamepost.text.toString()
+                tvdescription.text.toString()
                 Picasso.get().load(this).into(imageView)
             }
         }

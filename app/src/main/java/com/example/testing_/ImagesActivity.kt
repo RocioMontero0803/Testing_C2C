@@ -79,10 +79,12 @@ class ImagesActivity : AppCompatActivity() {
         firebaseFirestore = FirebaseFirestore.getInstance()
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = PostsAdapterI(mList)
+       adapter = PostsAdapterI(mList)
         binding.recyclerView.adapter = adapter
 
     }
+
+
 
     @SuppressLint("NotifyDataSetChanged")
     private fun getImages(){

@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 <EditText
-android:id="@+id/postInput"
+android:id="@+id/tvdescription"
 android:layout_width="363dp"
 android:layout_height="156dp"
 android:layout_margin="12dp"
@@ -136,7 +136,7 @@ app:layout_constraintStart_toStartOf="parent"
 app:layout_constraintTop_toBottomOf="@+id/imageCardView" />
 
 <EditText
-android:id="@+id/editTextText"
+android:id="@+id/tvnamepost"
 android:layout_width="342dp"
 android:layout_height="42dp"
 android:layout_marginTop="11dp"
@@ -144,7 +144,7 @@ android:layout_marginBottom="1dp"
 android:ems="10"
 android:hint="Post Title"
 android:inputType="text"
-app:layout_constraintBottom_toTopOf="@+id/postInput"
+app:layout_constraintBottom_toTopOf="@+id/tvdescription"
 app:layout_constraintEnd_toEndOf="parent"
 app:layout_constraintStart_toStartOf="parent"
 app:layout_constraintTop_toTopOf="parent"

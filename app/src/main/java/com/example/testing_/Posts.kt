@@ -8,4 +8,5 @@ data class Posts(
     @get:PropertyName("image_url") @set:PropertyName("image_url") var image_url: String = "",
     @get:PropertyName("time_stamp") @set:PropertyName("time_stamp")var time_stamp: Long = 0,
     var user: User? = null
+    ,var title: String? = ""
     )

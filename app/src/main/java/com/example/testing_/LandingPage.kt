@@ -21,6 +21,8 @@ class LandingPage : AppCompatActivity() {
     private lateinit var storageRef: StorageReference
     private lateinit var firebaseFirestore: FirebaseFirestore
     private var imageUri: Uri? = null
+    private var title: String? = ""
+    private var description: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +35,8 @@ class LandingPage : AppCompatActivity() {
     }
     private fun registerClickEvents() {
         binding.uploadBtn.setOnClickListener {
+            title = binding.tvnamepost.text.toString()
+            description = binding.tvdescription.text.toString()
             uploadImage()
         }
 
@@ -46,6 +50,7 @@ class LandingPage : AppCompatActivity() {
             resultLauncher.launch("image/*")
         }
     }
+
 
     private val resultLauncher = registerForActivityResult(
         ActivityResultContracts.GetContent()
@@ -62,6 +67,7 @@ class LandingPage : AppCompatActivity() {
         firebaseFirestore = FirebaseFirestore.getInstance()
     }
 
+
     private fun uploadImage() {
         binding.progressBar.visibility = View.VISIBLE
         storageRef = storageRef.child(System.currentTimeMillis().toString())
@@ -73,6 +79,8 @@ class LandingPage : AppCompatActivity() {
 
                         val map = HashMap<String, Any>()
                         map["pic"] = uri.toString()
+                        map["title"] = title.toString()
+                        map["description"] = description.toString()
 
                         firebaseFirestore.collection("images").add(map)
                             .addOnCompleteListener { firestoreTask ->
@@ -92,6 +100,8 @@ class LandingPage : AppCompatActivity() {
 //                                }
                                 binding.progressBar.visibility = View.GONE
                                 binding.imageView.setImageResource(R.drawable.upload_vector)
+                                binding.tvnamepost.setText("")
+                                binding.tvdescription.setText("")
                             }
 
                     }
