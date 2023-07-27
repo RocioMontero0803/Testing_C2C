@@ -6,6 +6,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="app_name">LoginAndSignUp</string>
+    <string name="about_app">This app is demostrating the abilties of upload posts for a viewer to see.The user is able to change their name and role status in the profile section as well as uploading a profile picture of their choice. If the user is a student they are only able to view and search for posts. If the user is a teacher they will be able to upload the posts and do the same functionalities as a student.This app is created based off Kotlin with Firebase as the backend database to perform these actions</string>
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
