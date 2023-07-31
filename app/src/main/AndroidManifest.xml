@@ -23,16 +23,7 @@
             android:label="@string/title_activity_landing_page"
             android:theme="@style/Theme.Testing_" />
         <activity
-            android:name=".CreatePostActivity"
-            android:exported="false" />
-        <activity
             android:name=".ImagesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ProfileInput"
-            android:exported="false" />
-        <activity
-            android:name=".ShowProfile"
             android:exported="false" />
         <activity
             android:name=".MainNavActivity"

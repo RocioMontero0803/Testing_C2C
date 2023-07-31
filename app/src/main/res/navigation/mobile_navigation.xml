@@ -12,12 +12,6 @@
         tools:layout="@layout/fragment_gallery"
         />
 
-    <activity
-        android:id="@+id/nav_disscuss"
-        android:name="com.example.testing_.UploadActivity"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/activity_upload" />
-
     <fragment
         android:id="@+id/nav_profile"
         android:name="com.example.testing_.ui.profile.ProfileFragment"

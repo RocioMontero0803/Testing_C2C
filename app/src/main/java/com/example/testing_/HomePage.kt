@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.testing_.databinding.ActivityHomePageBinding
+//import com.example.testing_.databinding.ActivityHomePageBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class HomePage : AppCompatActivity() {
@@ -20,12 +21,10 @@ class HomePage : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        binding.btnSignOutH.setOnClickListener {
             firebaseAuth.signOut()
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
 
-        }
         finish()
 
     }
