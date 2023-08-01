@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         val dialog = builder.create()
         dialog.show()
 
-        dataList.asReversed()
         dataList = ArrayList()
         adapter = MyAdapter(this@MainActivity, dataList)
         binding.recyclerView.adapter = adapter

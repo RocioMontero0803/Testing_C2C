@@ -13,5 +13,6 @@ class DataClass {
         this.dataPriority = dataPriority
         this.dataImage = dataImage
     }
-
+    constructor()
+    {}
 }

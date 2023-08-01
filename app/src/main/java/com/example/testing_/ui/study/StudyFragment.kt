@@ -45,7 +45,6 @@ class StudyFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         uid = auth.currentUser?.uid.toString()
 
-
         dataList = ArrayList()
         adapter = activity?.let { MyAdapter(it, dataList) }!!
         binding.recyclerView.adapter = adapter
