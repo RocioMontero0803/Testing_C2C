@@ -1,4 +1,4 @@
-package com.example.testing_
+package com.example.testing_.ui.study
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,10 +9,11 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import com.example.testing_.R
 import com.example.testing_.databinding.ActivityUploadBinding
+import com.example.testing_.ui.study.models.DataClass
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import java.net.URI
 import java.text.DateFormat
 import java.util.Calendar
 

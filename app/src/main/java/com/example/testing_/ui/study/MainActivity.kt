@@ -1,4 +1,4 @@
-package com.example.testing_
+package com.example.testing_.ui.study
 
 
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +11,9 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.testing_.R
+import com.example.testing_.ui.study.models.DataClass
+import com.example.testing_.ui.study.models.MyAdapter
 import com.google.firebase.database.*
 import java.util.*
 

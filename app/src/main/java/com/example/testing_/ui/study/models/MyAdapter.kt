@@ -1,4 +1,4 @@
-package com.example.testing_
+package com.example.testing_.ui.study.models
 
 import android.content.Context
 import android.content.Intent
@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.testing_.R
+import com.example.testing_.ui.study.DetailActivity
 
 class MyAdapter(private val context: Context, private var dataList: List<DataClass>) : RecyclerView.Adapter<MyViewHolder>() {
 

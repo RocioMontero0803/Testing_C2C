@@ -1,4 +1,4 @@
-package com.example.testing_
+package com.example.testing_.ui.study
 
 
 import android.os.Bundle

@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Testing_">
         <activity
-            android:name=".DetailActivity"
+            android:name=".ui.study.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".UploadActivity"
+            android:name=".ui.study.UploadActivity"
             android:exported="false" />
         <activity
             android:name=".LandingPage"
@@ -31,7 +31,7 @@
             android:label="@string/title_activity_main_nav"
             android:theme="@style/Theme.Testing_.NoActionBar" />
         <activity
-            android:name=".HomePage"
+            android:name=".SignOutActivity"
             android:exported="false" />
         <activity
             android:name=".SignInActivity"
@@ -46,7 +46,7 @@
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.study.MainActivity"
             android:exported="true" />
     </application>
 

@@ -7,7 +7,7 @@ import com.example.testing_.databinding.ActivityHomePageBinding
 //import com.example.testing_.databinding.ActivityHomePageBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class HomePage : AppCompatActivity() {
+class SignOutActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomePageBinding
     private lateinit var firebaseAuth: FirebaseAuth
 
@@ -19,7 +19,7 @@ class HomePage : AppCompatActivity() {
         binding = ActivityHomePageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        firebaseAuth = FirebaseAuth.getInstance()
+            firebaseAuth = FirebaseAuth.getInstance()
 
             firebaseAuth.signOut()
             val intent = Intent(this, SignInActivity::class.java)

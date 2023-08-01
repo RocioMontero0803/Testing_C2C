@@ -1,47 +1,19 @@
 package com.example.testing_.ui.home
 
-
-import android.net.Uri
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.testing_.DataClass
-import com.example.testing_.MyAdapter
-import com.example.testing_.UploadActivity
-import com.example.testing_.databinding.FragmentHomeBinding
-import com.google.firebase.database.*
-import java.util.*
-
-
-
-
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.testing_.databinding.ActivityMainBinding
-
-
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.SearchView
-import androidx.recyclerview.widget.GridLayoutManager
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
-import java.util.*
-
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+//import com.example.testing_.PostAdapter
+//import com.example.testing_.daos.PostDao
+import com.example.testing_.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    var databaseReference: DatabaseReference? = null
-    var eventListener: ValueEventListener? = null
-    private lateinit var dataList: ArrayList<DataClass>
-    private lateinit var adapter: MyAdapter
-    private var imageUri: Uri? = null
-    private lateinit var uid : String
-    private lateinit var auth : FirebaseAuth
+//    private lateinit var postDao: PostDao
+//    private lateinit var adapter: PostAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -51,102 +23,43 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+    ): View {
+
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        val gridLayoutManager = GridLayoutManager(activity, 1)
-        binding.recyclerView.layoutManager = gridLayoutManager
-        binding.search.clearFocus()
 
-        auth = FirebaseAuth.getInstance()
-        uid = auth.currentUser?.uid.toString()
-
-//        val builder = AlertDialog.Builder(
-//            requireActivity()
-//        )
-//
-//        val view: View = requireActivity().layoutInflater.inflate(R.layout.progress_layout_test, null)
-//        builder.setView(view)
-//
-//        val dialog = builder.show()
-//        val builder = activity?.let { AlertDialog.Builder(it) }
-//        if (builder != null) {
-//            builder.setCancelable(false)
+//        binding.fab.setOnClickListener{
+//            val intent = Intent(activity, CreatePostActivity::class.java)
+//            startActivity(intent)
 //        }
-//        builder.setView(R.layout.progress_layout)
-//        val dialog = builder.create()
-      //  dialog.show()
-
-        dataList = ArrayList()
-        adapter = activity?.let { MyAdapter(it, dataList) }!!
-        binding.recyclerView.adapter = adapter
-        databaseReference = FirebaseDatabase.getInstance().getReference("Todo List")
-      //  dialog.show()
-
-        eventListener = databaseReference!!.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                dataList.clear()
-                for (itemSnapshot in snapshot.children) {
-                    val dataClass = itemSnapshot.getValue(DataClass::class.java)
-                    if (dataClass != null) {
-                        dataList.add(dataClass)
-                    }
-                }
-                adapter.notifyDataSetChanged()
-             //   dialog.dismiss()
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-            //    dialog.dismiss()
-            }
-        })
-
-        binding.fab.setOnClickListener(View.OnClickListener {
-            val intent = Intent(activity, UploadActivity::class.java)
-            startActivity(intent)
-        })
-
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users")
-        databaseReference!!.child(uid).child("status").get().addOnSuccessListener {
-            Log.i("firebase", "Got role ${it.value}")
-            if (it.value == "Student") {
-                binding.fab.visibility = View.GONE
-            }
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
-        }
-
-        binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                searchList(newText)
-                return true
-            }
-        })
+     //   setUpRecyclerView()
         return root
     }
-
-    fun searchList(text: String) {
-        val searchList = ArrayList<DataClass>()
-        for (dataClass in dataList) {
-            if (dataClass.dataPriority?.lowercase()
-                    ?.contains(text.lowercase(Locale.getDefault())) == true
-            ) {
-                searchList.add(dataClass)
-            }
-        }
-        adapter.searchDataList(searchList)
-
-
-    }
-
-
-
+//    private fun setUpRecyclerView() {
+//        postDao = PostDao()
+//        val postsCollections = postDao.postCollections
+//        val query = postsCollections.orderBy("createdAt", Query.Direction.DESCENDING)
+//        val recyclerViewOptions = FirestoreRecyclerOptions.Builder<Post>().setQuery(query, Post::class.java).build()
+//
+//        adapter = PostAdapter(recyclerViewOptions, this)
+//
+//        binding.recyclerViewPost.adapter = adapter
+//        binding.recyclerViewPost.layoutManager = LinearLayoutManager(activity)
+//    }
+//
+//    override fun onStart() {
+//        super.onStart()
+//        adapter.startListening()
+//    }
+//
+//    override fun onStop() {
+//        super.onStop()
+//        adapter.stopListening()
+//    }
+//
+//    override fun onLikeClicked(postId: String) {
+//        postDao.updateLikes(postId)
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()
