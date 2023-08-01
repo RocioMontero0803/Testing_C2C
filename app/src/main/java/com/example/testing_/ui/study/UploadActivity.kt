@@ -2,7 +2,6 @@ package com.example.testing_.ui.study
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast

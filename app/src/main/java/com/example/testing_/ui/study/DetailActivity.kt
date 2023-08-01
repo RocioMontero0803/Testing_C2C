@@ -1,6 +1,5 @@
 package com.example.testing_.ui.study
 
-
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide

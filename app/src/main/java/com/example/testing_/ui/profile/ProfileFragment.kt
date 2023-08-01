@@ -72,8 +72,6 @@ class ProfileFragment : Fragment() {
                     "Status selected " + userStatus[position] + " press update",
                     Toast.LENGTH_SHORT
                 ).show()
-                //  val text = spinner.selectedItem.toString()
-                //   databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(text);
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {

@@ -49,7 +49,6 @@ class StudyFragment : Fragment() {
         adapter = activity?.let { MyAdapter(it, dataList) }!!
         binding.recyclerView.adapter = adapter
         databaseReference = FirebaseDatabase.getInstance().getReference("Todo List")
-      //  dialog.show()
 
         eventListener = databaseReference!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -61,11 +60,9 @@ class StudyFragment : Fragment() {
                     }
                 }
                 adapter.notifyDataSetChanged()
-             //   dialog.dismiss()
             }
 
             override fun onCancelled(error: DatabaseError) {
-            //    dialog.dismiss()
             }
         })
 
@@ -110,8 +107,6 @@ class StudyFragment : Fragment() {
 
 
     }
-
-
 
 
     override fun onDestroyView() {

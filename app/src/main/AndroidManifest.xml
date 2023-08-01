@@ -18,14 +18,6 @@
             android:name=".ui.study.UploadActivity"
             android:exported="false" />
         <activity
-            android:name=".LandingPage"
-            android:exported="false"
-            android:label="@string/title_activity_landing_page"
-            android:theme="@style/Theme.Testing_" />
-        <activity
-            android:name=".ImagesActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainNavActivity"
             android:exported="false"
             android:label="@string/title_activity_main_nav"
@@ -45,9 +37,6 @@
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.study.MainActivity"
-            android:exported="true" />
     </application>
 
 </manifest>
