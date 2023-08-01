@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.example.testing_.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
-    var imageUrl = ""
+    private var imageUrl = ""
     private lateinit var binding: ActivityDetailBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

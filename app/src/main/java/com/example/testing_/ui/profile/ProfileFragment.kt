@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.example.testing_.ui.profile.models.User
 import com.example.testing_.databinding.FragmentProfileBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -53,9 +52,8 @@ class ProfileFragment : Fragment() {
 
 
         val spinner = binding.spinner
-        //val arrayAdapter = ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item, userStatus)
         val arrayAdapter = activity?.let {
-            ArrayAdapter<String>(
+            ArrayAdapter(
                 it,
                 android.R.layout.simple_spinner_dropdown_item,
                 userStatus
@@ -128,7 +126,7 @@ class ProfileFragment : Fragment() {
         return root
     }
 
-    // this allows for the information to be snapshoted and stay on page
+    // this allows for the information to be snapshot and stay on page
     private fun getUserData() {
         databaseReference.child(uid).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

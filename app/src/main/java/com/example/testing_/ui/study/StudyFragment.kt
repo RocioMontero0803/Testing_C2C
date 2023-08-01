@@ -1,18 +1,12 @@
 package com.example.testing_.ui.study
 
-
-import android.net.Uri
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.testing_.ui.study.models.DataClass
 import com.example.testing_.ui.study.models.MyAdapter
 import com.google.firebase.database.*
 import java.util.*
-
-
 import android.os.Bundle
-
-
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
@@ -30,7 +24,6 @@ class StudyFragment : Fragment() {
     var eventListener: ValueEventListener? = null
     private lateinit var dataList: ArrayList<DataClass>
     private lateinit var adapter: MyAdapter
-    private var imageUri: Uri? = null
     private lateinit var uid : String
     private lateinit var auth : FirebaseAuth
 
@@ -52,21 +45,6 @@ class StudyFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         uid = auth.currentUser?.uid.toString()
 
-//        val builder = AlertDialog.Builder(
-//            requireActivity()
-//        )
-//
-//        val view: View = requireActivity().layoutInflater.inflate(R.layout.progress_layout_test, null)
-//        builder.setView(view)
-//
-//        val dialog = builder.show()
-//        val builder = activity?.let { AlertDialog.Builder(it) }
-//        if (builder != null) {
-//            builder.setCancelable(false)
-//        }
-//        builder.setView(R.layout.progress_layout)
-//        val dialog = builder.create()
-      //  dialog.show()
 
         dataList = ArrayList()
         adapter = activity?.let { MyAdapter(it, dataList) }!!
@@ -92,10 +70,10 @@ class StudyFragment : Fragment() {
             }
         })
 
-        binding.fab.setOnClickListener(View.OnClickListener {
+        binding.fab.setOnClickListener {
             val intent = Intent(activity, UploadActivity::class.java)
             startActivity(intent)
-        })
+        }
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Users")
         databaseReference!!.child(uid).child("status").get().addOnSuccessListener {
